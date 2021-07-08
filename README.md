@@ -1,10 +1,10 @@
-------- Intro -----------
+# Intro
+
 As of now this Readme is an info dump of all the ideas I have for this project.
 When this project gets more fleshed out the info may be organized better, fleshed out,
 and improved on.
 
-
-------- General Info ---------------------
+# General Info
 
 Name: Seasonal Recipes (TBD)
 
@@ -12,9 +12,9 @@ Main Idea: Match fruit seasons to certain time of year and give recipies for sai
 
 Question: Does anything other than fruit have seasons???
 
----------- Baseline Features ------------
+# Baseline Features
 
-##Three Main Pages:
+## Three Main Pages:
 
 Homepage has a calendar that aligns with day of visitation:
 	Shows what foods are in season
@@ -24,28 +24,25 @@ Page that searches database:
 	- Month as a search query that returns all fruits in season
 
 Page that searches recipes by fruits in season today (API call to recipe website????)
-
----------- Database Layout ------------------------
+ 
+# Database Layout
 
 Food Database:
-Food (PK) 			| Season Start 				| Season End
-String				| Int					| Int
--Name of the Food		| Start month of the season		| End month of the season
--Will be used in API calls	| Jan = 00, Dec = 11 			| 
+| Food (PK) 			| Season Start 				| Season End			|
+| String			| Int					| Int				|
+| Name of the Food		| Start month of the season		| End month of the season	|
+| Will be used in API calls	| Jan = 00, Dec = 11 			| Jan = 00, Dec = 11		|
 
------------- Tech Stack ---------------------------
+# Tech Stack
 
 MERN:
-MongoDB
-Express.js
-React.js
-Node.js
+- MongoDB
+- Express.js
+- React.js
+- Node.js
 
------------ Future Features/Ideas ---------------------------
+# Future Features/Ideas
 
-User Login:
-	Can be used to favorite fruits and recipes
-
-Link to Wikipedia Page in Food DB
-
-Web hosting
+- User Login: Can be used to favorite fruits and recipes
+- Link to Wikipedia Page in Food DB
+- Web hosting
