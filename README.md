@@ -28,7 +28,8 @@ Page that searches recipes by fruits in season today (API call to recipe website
 # Database Layout
 
 Food Database:
-| Food (PK) 			| Season Start 				| Season End			|
+| Food (PK)  			| Season Start 				| Season End			|
+| ----------------------------- | ------------------------------------- | ----------------------------- |
 | String			| Int					| Int				|
 | Name of the Food		| Start month of the season		| End month of the season	|
 | Will be used in API calls	| Jan = 00, Dec = 11 			| Jan = 00, Dec = 11		|
