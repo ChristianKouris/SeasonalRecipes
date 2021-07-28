@@ -1,0 +1,7 @@
+{
+    "app_id": "seasonal-recipes-opged",
+    "config_version": 20210101,
+    "name": "Seasonal-Recipes",
+    "location": "US-OR",
+    "deployment_model": "LOCAL"
+}
