@@ -4,39 +4,29 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import RestaurantsList from "./components/restaurants-list";
 
 function App() {
-  const [user, setUser] = React.useState(null);
 
-  async function login(user = null) {
-    setUser(user);
-  }
-
-  async function logout() {
-    setUser(null)
-  }
-
-  return (
+    return (
     <div>
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/restaurants" className="navbar-brand">
-          Seasonal Recipes
-        </a>
-        <div className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link to={"/restaurants"} className="nav-link">
-              Produce
-            </Link>
-          </li>
-        </div>
-      </nav>
+        <nav className="navbar navbar-expand navbar-dark bg-dark">
+            <a href="/restaurants" className="navbar-brand">
+                Seasonal Recipes
+            </a>
+            <div className="navbar-nav mr-auto">
+                <li className="nav-item">
+                <Link to={"/restaurants"} className="nav-link">
+                    Produce
+                </Link>
+                </li>
+            </div>
+        </nav>
 
-      <div className="container mt-3">
-        <Switch>
-          <Route exact path={["/", "/restaurants"]} component={RestaurantsList} />
-          
-        </Switch>
-      </div>
+        <div className="container mt-3">
+            <Switch>
+                <Route exact path={["/", "/restaurants"]} component={RestaurantsList} />
+            </Switch>
+        </div>
     </div>
-  );
+    );
 }
 
 export default App;
