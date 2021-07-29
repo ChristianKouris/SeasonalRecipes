@@ -149,18 +149,20 @@ const RestaurantsList = props => {
           const address = `${restaurant.address.building} ${restaurant.address.street}, ${restaurant.address.zipcode}`;
           return (
             <div className="col-lg-4 pb-1">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">{restaurant.name}</h5>
-                  <p className="card-text">
-                    <strong>Cuisine: </strong>{restaurant.cuisine}<br/>
-                    <strong>Address: </strong>{address}
-                  </p>
-                  <div className="row">
-                    <a target="_blank" href={"https://www.google.com/maps/place/" + address} className="btn btn-primary col-lg-5 mx-1 mb-1">View Wikiedia Article</a>
+                  <div className="card">
+                      <div className="card-body">
+                          <h5 className="card-title">{restaurant.name}</h5>
+                          <p className="card-text">
+                              Season: <br />
+                              <span className="badge bg-success mx-1">Spring</span>
+                              <span className="badge bg-info mx-1">Summer</span>
+                              <span className="badge bg-warning mx-1">Fall</span>
+                              <span className="badge bg-secondary mx-1">Winter</span>
+                          </p>
+                          <a target="_blank" href={"https://www.google.com/maps/place/" + address} className="btn btn-primary mb-1">View Wikiedia Article</a>
+                      </div>
+                      <img height="300px" className="card-img-bottom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single.jpg/220px-Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single.jpg" alt="Card image" />
                   </div>
-                </div>
-              </div>
             </div>
           );
         })}

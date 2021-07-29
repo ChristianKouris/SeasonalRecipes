@@ -18,11 +18,11 @@ Food Database:
 
 # Tech Stack
 
-MERN:
-- MongoDB
-- Express.js
 - React.js
-- Node.js
+- MongoDB Realm
+- MongoDB Atlas
+- Bootstrap
+- react-router-dom
 
 # Credits
 
