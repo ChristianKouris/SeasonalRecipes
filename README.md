@@ -1,6 +1,6 @@
 # Intro
 
-Put Sales Pitch here
+THIS PROJECT IS STILL IN DEVELOPMENT
 
 # General Info
 
@@ -11,7 +11,7 @@ Main Idea: Match fruit seasons to certain time of year and give recipes for said
 # Database Layout
 
 Food Database:
-| Food (PK)  				| Fresh Season  																				| Picture				    |
+| Food		  				| Fresh Season  																				| Picture				    |
 | ------------------------- | -------------------------																		| ------------------------- |
 | String					| Int																							| String				    |
 | Name of the Food			| Spring(3), Summer(2), Fall(1), Winter(0)	will be stored as an int representation of the bits | A picture of the produce	|
@@ -21,8 +21,8 @@ Food Database:
 - React.js
 - MongoDB Realm
 - MongoDB Atlas
-- Bootstrap
-- react-router-dom
+- Bootstrap (npm)
+- react-router-dom (npm)
 
 # Credits
 
