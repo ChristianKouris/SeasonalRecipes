@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import RestaurantDataService from "../services/restaurant";
-import { Link } from "react-router-dom";
 
 const RestaurantsList = props => {
   const [restaurants, setRestaurants] = useState([]);
@@ -158,10 +157,7 @@ const RestaurantsList = props => {
                     <strong>Address: </strong>{address}
                   </p>
                   <div className="row">
-                  <Link to={"/restaurants/"+restaurant._id} className="btn btn-primary col-lg-5 mx-1 mb-1">
-                    View Reviews
-                  </Link>
-                  <a target="_blank" href={"https://www.google.com/maps/place/" + address} className="btn btn-primary col-lg-5 mx-1 mb-1">View Map</a>
+                    <a target="_blank" href={"https://www.google.com/maps/place/" + address} className="btn btn-primary col-lg-5 mx-1 mb-1">View Wikiedia Article</a>
                   </div>
                 </div>
               </div>
