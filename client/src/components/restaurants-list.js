@@ -4,13 +4,9 @@ import RestaurantDataService from "../services/restaurant";
 const RestaurantsList = props => {
     const [restaurants, setRestaurants] = useState([]);
     const [searchName, setSearchName] = useState("");
-    const [searchZip, setSearchZip] = useState("");
-    const [searchCuisine, setSearchCuisine] = useState("");
-    const [cuisines, setCuisines] = useState(["All Cuisines"]);
 
     useEffect(() => {
         retrieveRestaurants();
-        retrieveCuisines();
     }, []);
 
     const onChangeSearchName = e => {
@@ -18,14 +14,8 @@ const RestaurantsList = props => {
         setSearchName(searchName);
     };
 
-    const onChangeSearchZip = e => {
-        const searchZip = e.target.value;
-        setSearchZip(searchZip);
-    };
-
-    const onChangeSearchCuisine = e => {
-        const searchCuisine = e.target.value;
-        setSearchCuisine(searchCuisine);
+    const onChangeSearchSeason = e => {
+        const season = e.target.value;
     };
 
     const retrieveRestaurants = () => {
@@ -37,21 +27,6 @@ const RestaurantsList = props => {
             .catch(e => {
                 console.log(e);
             });
-    };
-
-    const retrieveCuisines = () => {
-        RestaurantDataService.getCuisines()
-            .then(response => {
-                console.log(response.data);
-                setCuisines(["All Cuisines"].concat(response.data));
-            })
-            .catch(e => {
-                console.log(e);
-            });
-    };
-
-    const refreshList = () => {
-        retrieveRestaurants();
     };
 
     const find = (query, by) => {
@@ -69,18 +44,6 @@ const RestaurantsList = props => {
         find(searchName, "name")
     };
 
-    const findByZip = () => {
-        find(searchZip, "zipcode")
-    };
-
-    const findByCuisine = () => {
-        if (searchCuisine == "All Cuisines") {
-            refreshList();
-        } else {
-            find(searchCuisine, "cuisine")
-        }
-    };
-
     return (
         <div>
             <div className="row pb-1">
@@ -91,29 +54,21 @@ const RestaurantsList = props => {
                     </div>
                 </div>
                 <div className="input-group col-lg-4">
-                    <input type="text" className="form-control" placeholder="Search by zip" value={searchZip} onChange={onChangeSearchZip} />
-                    <div className="input-group-append">
-                        <button className="btn btn-outline-secondary" type="button" onClick={findByZip}>Search</button>
-                    </div>
-                </div>
-                <div className="input-group col-lg-4">
-                    <select onChange={onChangeSearchCuisine}>
-                        {cuisines.map(cuisine => {
-                            return (
-                                <option value={cuisine}> {cuisine.substr(0, 20)} </option>
-                            )
-                        })}
+                    <select onChange={onChangeSearchSeason}>
+                        <option value="spring">Spring</option>
+                        <option value="summer">Summer</option>
+                        <option value="fall">Fall</option>
+                        <option value="winter">Winter</option>
                     </select>
                     <div className="input-group-append">
-                        <button className="btn btn-outline-secondary" type="button" onClick={findByCuisine}>Search</button>
+                        <button className="btn btn-outline-secondary" type="button" onClick={onChangeSearchSeason}>Search</button>
                     </div>
                 </div>
             </div>
             <div className="row">
                 {restaurants.map((restaurant) => {
-                    const address = `${restaurant.address.building} ${restaurant.address.street}, ${restaurant.address.zipcode}`;
                     return (
-                        <div className="col-lg-4 pb-1">
+                        <div className="col-lg-4 pb-1" key={restaurant._id}>
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">{restaurant.name}</h5>
@@ -124,9 +79,10 @@ const RestaurantsList = props => {
                                         <span className="badge bg-warning mx-1">Fall</span>
                                         <span className="badge bg-secondary mx-1">Winter</span>
                                     </p>
-                                    <a target="_blank" href={"https://www.google.com/maps/place/" + address} className="btn btn-primary mb-1">View Wikiedia Article</a>
+                                    <a target="_blank" href={"https://en.wikipedia.org/wiki/" + "Fruit"} className="btn btn-primary col-lg-5 mx-1 mb-1">More Info</a>
+                                    <a target="_blank" href={"https://en.wikipedia.org/wiki/" + "Recipe"} className="btn btn-primary col-lg-5 mx-1 mb-1">View Recipes</a>
                                 </div>
-                                <img height="300px" className="card-img-bottom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single.jpg/220px-Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single.jpg" alt="Card image" />
+                                <img height="300px" className="card-img-bottom" src={restaurant.picture} alt="Card image" />
                             </div>
                         </div>
                     );
