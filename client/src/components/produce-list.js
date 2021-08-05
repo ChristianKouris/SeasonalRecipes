@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import RestaurantDataService from "../services/restaurant";
+import ProduceDataService from "../services/produce";
 
-const RestaurantsList = props => {
-    const [restaurants, setRestaurants] = useState([]);
+const ProduceList = props => {
+    const [produce, setProduce] = useState([]);
     const [searchName, setSearchName] = useState("");
 
     useEffect(() => {
-        retrieveRestaurants();
+        retrieveProduce();
     }, []);
 
     const onChangeSearchName = e => {
@@ -18,11 +18,11 @@ const RestaurantsList = props => {
         const season = e.target.value;
     };
 
-    const retrieveRestaurants = () => {
-        RestaurantDataService.getAll()
+    const retrieveProduce = () => {
+        ProduceDataService.getAll()
             .then(response => {
                 console.log(response.data);
-                setRestaurants(response.data.restaurants);
+                setProduce(response.data.produce);
             })
             .catch(e => {
                 console.log(e);
@@ -30,10 +30,10 @@ const RestaurantsList = props => {
     };
 
     const find = (query, by) => {
-        RestaurantDataService.find(query, by)
+        ProduceDataService.find(query, by)
             .then(response => {
                 console.log(response.data);
-                setRestaurants(response.data.restaurants);
+                setProduce(response.data.produce);
             })
             .catch(e => {
                 console.log(e);
@@ -66,23 +66,23 @@ const RestaurantsList = props => {
                 </div>
             </div>
             <div className="row">
-                {restaurants.map((restaurant) => {
+                {produce.map((item) => {
                     return (
-                        <div className="col-lg-4 pb-1" key={restaurant._id}>
+                        <div className="col-lg-4 pb-3" key={item._id}>
                             <div className="card">
                                 <div className="card-body">
-                                    <h5 className="card-title">{restaurant.name}</h5>
+                                    <h5 className="card-title">{item.name}</h5>
                                     <p className="card-text">
                                         Season: <br />
-                                        <span className="badge bg-success mx-1">Spring</span>
-                                        <span className="badge bg-info mx-1">Summer</span>
-                                        <span className="badge bg-warning mx-1">Fall</span>
-                                        <span className="badge bg-secondary mx-1">Winter</span>
+                                        {item.spring && <span className="badge bg-success mx-1">Spring</span>}
+                                        {item.summer && <span className="badge bg-info mx-1">Summer</span>}
+                                        {item.fall && <span className="badge bg-warning mx-1">Fall</span>}
+                                        {item.winter && <span className="badge bg-secondary mx-1">Winter</span>}
                                     </p>
-                                    <a target="_blank" href={"https://en.wikipedia.org/wiki/" + "Fruit"} className="btn btn-primary col-lg-5 mx-1 mb-1">More Info</a>
-                                    <a target="_blank" href={"https://en.wikipedia.org/wiki/" + "Recipe"} className="btn btn-primary col-lg-5 mx-1 mb-1">View Recipes</a>
+                                    <a target="_blank" rel="noreferrer" href={"https://en.wikipedia.org/wiki/" + item.name} className="btn btn-primary col-lg-5 mx-1 mb-1">More Info</a>
+                                    <a target="_blank" rel="noreferrer" href={"https://www.allrecipes.com/search/results/?IngIncl=" + item.name} className="btn btn-primary col-lg-5 mx-1 mb-1">View Recipes</a>
                                 </div>
-                                <img height="300px" className="card-img-bottom" src={restaurant.picture} alt="Card image" />
+                                <img height="250px" className="card-img-bottom" src={item.picture} alt={item.name} />
                             </div>
                         </div>
                     );
@@ -92,4 +92,4 @@ const RestaurantsList = props => {
     );
 }
 
-export default RestaurantsList;
+export default ProduceList;

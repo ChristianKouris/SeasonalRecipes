@@ -1,19 +1,19 @@
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import RestaurantsList from "./components/restaurants-list";
+import ProduceList from "./components/produce-list";
 
 function App() {
 
     return (
     <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-            <a href="/restaurants" className="navbar-brand">
+            <a href="/" className="navbar-brand">
                 Seasonal Recipes
             </a>
             <div className="navbar-nav mr-auto">
                 <li className="nav-item">
-                <Link to={"/restaurants"} className="nav-link">
+                <Link to={"/produce"} className="nav-link">
                     Produce
                 </Link>
                 </li>
@@ -22,7 +22,7 @@ function App() {
 
         <div className="container mt-3">
             <Switch>
-                <Route exact path={["/", "/restaurants"]} component={RestaurantsList} />
+                <Route exact path={["/", "/produce"]} component={ProduceList} />
             </Switch>
         </div>
     </div>
