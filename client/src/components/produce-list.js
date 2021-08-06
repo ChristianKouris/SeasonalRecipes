@@ -58,10 +58,10 @@ const ProduceList = props => {
                 </div>
             </div>
             <div className="row pb-2">
-                <button className={"btn col-sm-3 " + (season.spring ? "btn-success" : "btn-outline-secondary")} value="spring" type="button" onClick={onChangeSearchSeason}>Spring</button>
-                <button className={"btn col-sm-3 " + (season.summer ? "btn-success" : "btn-outline-secondary")} value="summer" type="button" onClick={onChangeSearchSeason}>Summer</button>
-                <button className={"btn col-sm-3 " + (season.fall ? "btn-success" : "btn-outline-secondary")} value="fall" type="button" onClick={onChangeSearchSeason}>Fall</button>
-                <button className={"btn col-sm-3 " + (season.winter ? "btn-success" : "btn-outline-secondary")} value="winter" type="button" onClick={onChangeSearchSeason}>Winter</button>
+                <button className={`btn col-sm-3 ${season.spring ? "btn-success" : "btn-outline-secondary"}`} value="spring" type="button" onClick={onChangeSearchSeason}>Spring</button>
+                <button className={`btn col-sm-3 ${season.summer ? "btn-success" : "btn-outline-secondary"}`} value="summer" type="button" onClick={onChangeSearchSeason}>Summer</button>
+                <button className={`btn col-sm-3 ${season.fall ? "btn-success" : "btn-outline-secondary"}`} value="fall" type="button" onClick={onChangeSearchSeason}>Fall</button>
+                <button className={`btn col-sm-3 ${season.winter ? "btn-success" : "btn-outline-secondary"}`} value="winter" type="button" onClick={onChangeSearchSeason}>Winter</button>
             </div>
             <div className="row">
                 {produce.map((item) => {
