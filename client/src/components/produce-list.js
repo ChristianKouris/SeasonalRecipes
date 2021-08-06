@@ -4,6 +4,7 @@ import ProduceDataService from "../services/produce";
 const ProduceList = props => {
     const [produce, setProduce] = useState([]);
     const [searchName, setSearchName] = useState("");
+    const [season, setSeason] = useState({"spring":false, "summer":false, "fall":false, "winter":false});
 
     useEffect(() => {
         retrieveProduce();
@@ -15,7 +16,8 @@ const ProduceList = props => {
     };
 
     const onChangeSearchSeason = e => {
-        const season = e.target.value;
+        const newSeason = e.target.value;
+        setSeason({ ...season, [newSeason]: !season[newSeason]})
     };
 
     const retrieveProduce = () => {
@@ -33,6 +35,7 @@ const ProduceList = props => {
         ProduceDataService.find(query, by)
             .then(response => {
                 console.log(response.data);
+                console.log(season);
                 setProduce(response.data.produce);
             })
             .catch(e => {
@@ -46,24 +49,19 @@ const ProduceList = props => {
 
     return (
         <div>
-            <div className="row pb-1">
-                <div className="input-group col-lg-4">
+            <div className="row">
+                <div className="input-group">
                     <input type="text" className="form-control" placeholder="Search by name" value={searchName} onChange={onChangeSearchName} />
                     <div className="input-group-append">
                         <button className="btn btn-outline-secondary" type="button" onClick={findByName}>Search</button>
                     </div>
                 </div>
-                <div className="input-group col-lg-4">
-                    <select onChange={onChangeSearchSeason}>
-                        <option value="spring">Spring</option>
-                        <option value="summer">Summer</option>
-                        <option value="fall">Fall</option>
-                        <option value="winter">Winter</option>
-                    </select>
-                    <div className="input-group-append">
-                        <button className="btn btn-outline-secondary" type="button" onClick={onChangeSearchSeason}>Search</button>
-                    </div>
-                </div>
+            </div>
+            <div className="row pb-2">
+                <button className={"btn col-sm-3 " + (season.spring ? "btn-success" : "btn-outline-secondary")} value="spring" type="button" onClick={onChangeSearchSeason}>Spring</button>
+                <button className={"btn col-sm-3 " + (season.summer ? "btn-success" : "btn-outline-secondary")} value="summer" type="button" onClick={onChangeSearchSeason}>Summer</button>
+                <button className={"btn col-sm-3 " + (season.fall ? "btn-success" : "btn-outline-secondary")} value="fall" type="button" onClick={onChangeSearchSeason}>Fall</button>
+                <button className={"btn col-sm-3 " + (season.winter ? "btn-success" : "btn-outline-secondary")} value="winter" type="button" onClick={onChangeSearchSeason}>Winter</button>
             </div>
             <div className="row">
                 {produce.map((item) => {
