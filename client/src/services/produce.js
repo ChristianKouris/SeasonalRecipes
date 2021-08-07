@@ -1,12 +1,13 @@
 import http from "../http-common";
 
 class ProduceDataService {
-    getAll(page = 0) {
+    getAll() {
         return http.get(`produce`);
     }
 
-    find(query, by = "name", page = 0) {
-        return http.get(`produce?${by}=${query}`);
+    find(query) {
+        let seasonBin = (query.spring ? 1000 : 0) + (query.summer ? 100 : 0) + (query.fall ? 10 : 0) + (query.winter ? 1 : 0);
+        return http.get(`produce?name=${query['name']}&season=${seasonBin}`);
     } 
 
 }

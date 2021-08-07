@@ -7,8 +7,8 @@ const ProduceList = props => {
     const [season, setSeason] = useState({"spring":false, "summer":false, "fall":false, "winter":false});
 
     useEffect(() => {
-        retrieveProduce();
-    }, []);
+        find();
+    }, [season]);
 
     const onChangeSearchName = e => {
         const searchName = e.target.value;
@@ -17,22 +17,18 @@ const ProduceList = props => {
 
     const onChangeSearchSeason = e => {
         const newSeason = e.target.value;
-        setSeason({ ...season, [newSeason]: !season[newSeason]})
+        setSeason({ ...season, [newSeason]: !season[newSeason] })
     };
 
-    const retrieveProduce = () => {
-        ProduceDataService.getAll()
-            .then(response => {
-                console.log(response.data);
-                setProduce(response.data.produce);
-            })
-            .catch(e => {
-                console.log(e);
-            });
+    const handleKeyDown = e => {
+        if (e.key === 'Enter') {
+            find()
+        }
     };
 
-    const find = (query, by) => {
-        ProduceDataService.find(query, by)
+    const find = () => {
+        let query = { "name": searchName, ...season };
+        ProduceDataService.find(query)
             .then(response => {
                 console.log(response.data);
                 console.log(season);
@@ -41,19 +37,15 @@ const ProduceList = props => {
             .catch(e => {
                 console.log(e);
             });
-    };
-
-    const findByName = () => {
-        find(searchName, "name")
-    };
+    }
 
     return (
         <div>
             <div className="row">
                 <div className="input-group">
-                    <input type="text" className="form-control" placeholder="Search by name" value={searchName} onChange={onChangeSearchName} />
+                    <input type="text" className="form-control" placeholder="Search by name" value={searchName} onChange={onChangeSearchName} onKeyDown={handleKeyDown} />
                     <div className="input-group-append">
-                        <button className="btn btn-outline-secondary" type="button" onClick={findByName}>Search</button>
+                        <button className="btn btn-outline-secondary" type="button" onClick={find}>Search</button>
                     </div>
                 </div>
             </div>
