@@ -11,10 +11,10 @@ Main Idea: Match fruit seasons to certain time of year and give recipes for said
 # Database Layout
 
 Food Database:
-| Food		  				| Fresh Season  																				| Picture				    |
-| ------------------------- | -------------------------																		| ------------------------- |
-| String					| Int																							| String				    |
-| Name of the Food			| Spring(3), Summer(2), Fall(1), Winter(0)	will be stored as an int representation of the bits | A picture of the produce	|
+| Food		  		| Spring  	| Summer	| Fall  	| Winter  	| Picture							|
+| -----------------	| ---------	| ---------	| ---------	| ---------	| ---------------------------------	|
+| String			| Boolean	| Boolean	| Boolean	| Boolean	| String							|
+| Name of the Food	| Spring	| Summer	| Fall		| Winter	| Link to the piture of the produce	|
 
 # Tech Stack
 
@@ -28,8 +28,10 @@ Food Database:
 
 Project and Tutorial that SeasonalRecipes was built on: https://www.youtube.com/watch?v=mrHNSanmqQ4
 
-Seasonality of Produce: https://snaped.fns.usda.gov/seasonal-produce-guide
+Seasonality of Produce and Images: https://snaped.fns.usda.gov/seasonal-produce-guide
 
 Summary of Produce: https://www.wikipedia.org/
+
+Recipes: https://www.allrecipes.com/
 
 Favicon: https://www.favicon.cc/?action=icon&file_id=965662

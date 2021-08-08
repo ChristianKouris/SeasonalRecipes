@@ -17,12 +17,12 @@ const ProduceList = props => {
 
     const onChangeSearchSeason = e => {
         const newSeason = e.target.value;
-        setSeason({ ...season, [newSeason]: !season[newSeason] })
+        setSeason({ ...season, [newSeason]: !season[newSeason] });
     };
 
     const handleKeyDown = e => {
         if (e.key === 'Enter') {
-            find()
+            find();
         }
     };
 
