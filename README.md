@@ -21,8 +21,9 @@ Food Database:
 - React.js
 - MongoDB Realm
 - MongoDB Atlas
-- Bootstrap (npm)
-- react-router-dom (npm)
+- Bootstrap
+- react-router-dom
+- react-calendar
 
 # Credits
 
@@ -35,3 +36,5 @@ Summary of Produce: https://www.wikipedia.org/
 Recipes: https://www.allrecipes.com/
 
 Favicon: https://www.favicon.cc/?action=icon&file_id=965662
+
+Calendar: https://www.npmjs.com/package/react-calendar
