@@ -25,6 +25,16 @@ function App() {
                     <Route exact path="/produce" component={ProduceList} />
                 </Switch>
             </div>
+            <nav className="navbar navbar-expand navbar-dark bg-dark justify-content-center fixed-bottom">
+                <ul className="navbar-nav">
+                    <li className="nav-item active">    
+                        <a href="https://github.com/ChristianKouris/SeasonalRecipes" className="nav-link" target="_blank" rel="noreferrer">
+                            See The Code For This Website
+                        </a>
+                    </li>
+                </ul>
+                
+            </nav>
         </div>
     );
 }
