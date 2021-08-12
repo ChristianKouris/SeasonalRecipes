@@ -3,6 +3,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProduceList from "./components/produce-list";
 import HomePage from "./components/homepage";
+import NotFound from "./components/not-found";
 
 function App() {
     return (
@@ -13,9 +14,7 @@ function App() {
                 </a>
                 <div className="navbar-nav mr-auto">
                     <li className="nav-item">
-                        <Link to={"/produce"} className="nav-link">
-                            Produce
-                            </Link>
+                        <Link to={"/produce"} className="nav-link">Produce</Link>
                     </li>
                 </div>
             </nav>
@@ -23,6 +22,7 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/produce" component={ProduceList} />
+                    <Route path="*" component={NotFound} />
                 </Switch>
             </div>
             <nav className="navbar navbar-expand navbar-dark bg-dark justify-content-center fixed-bottom">
