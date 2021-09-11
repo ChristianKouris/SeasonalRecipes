@@ -4,7 +4,7 @@ import ProduceDataService from "../services/produce";
 const ProduceList = props => {
     const [produce, setProduce] = useState([]);
     const [searchName, setSearchName] = useState("");
-    const [season, setSeason] = useState({"spring":false, "summer":false, "fall":false, "winter":false});
+    const [season, setSeason] = useState({ "spring": false, "summer": false, "fall": false, "winter": false });
 
     useEffect(() => {
         find();

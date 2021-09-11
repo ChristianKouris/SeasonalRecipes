@@ -9,13 +9,21 @@ function App() {
     return (
         <div>
             <nav className="navbar navbar-expand navbar-dark bg-dark">
-                <a href="/" className="navbar-brand">
-                    Seasonal Recipes
-                </a>
-                <div className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                        <Link to={"/produce"} className="nav-link">Produce</Link>
-                    </li>
+                <a href="/" className="navbar-brand">Seasonal Recipes</a>
+                <div className="container-fluid">
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item">
+                            <Link to={"/produce"} className="nav-link">Produce</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to={"/"} className="nav-link">Recipes</Link>
+                        </li>
+                    </ul>
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item">
+                            <Link to={"/"} className="nav-link">Login</Link>
+                        </li>
+                    </ul>
                 </div>
             </nav>
             <div className="container mt-3">
@@ -33,7 +41,6 @@ function App() {
                         </a>
                     </li>
                 </ul>
-                
             </nav>
         </div>
     );
