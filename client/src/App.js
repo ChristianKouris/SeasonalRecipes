@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProduceList from "./components/produce-list";
 import HomePage from "./components/homepage";
 import NotFound from "./components/not-found";
+import ProfileTab from "./components/profile-tab";
+import Login from "./components/login";
 
 function App() {
+
+    const [user, setUser] = useState(false);
+
     return (
         <div>
             <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -19,17 +24,14 @@ function App() {
                             <Link to={"/"} className="nav-link">Recipes</Link>
                         </li>
                     </ul>
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item">
-                            <Link to={"/"} className="nav-link">Login</Link>
-                        </li>
-                    </ul>
+                    <ProfileTab user={user} setUser={setUser} />
                 </div>
             </nav>
             <div className="container mt-3">
                 <Switch>
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/produce" component={ProduceList} />
+                    <Route exact path="/login" render={(props) => <Login {...props} setUser={setUser} />} />
                     <Route path="*" component={NotFound} />
                 </Switch>
             </div>
